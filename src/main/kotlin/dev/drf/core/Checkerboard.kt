@@ -7,6 +7,6 @@ interface Checkerboard {
         figures.addAll(blackFigures())
         return figures
     }
-    fun whiteFigures(): MutableList<ChessFigure>
-    fun blackFigures(): MutableList<ChessFigure>
+    fun whiteFigures(): List<ChessFigure>
+    fun blackFigures(): List<ChessFigure>
 }

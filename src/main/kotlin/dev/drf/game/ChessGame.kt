@@ -1,9 +1,9 @@
 package dev.drf.game
 
-import dev.drf.core.Checkerboard
+import dev.drf.config.ChessConfig
 
 class ChessGame(
-        val map: Checkerboard
+        val config: ChessConfig
 ) {
     fun start() {
         // TODO
