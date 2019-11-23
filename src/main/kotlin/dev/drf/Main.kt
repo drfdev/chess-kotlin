@@ -9,4 +9,6 @@ fun main(args: Array<String>) {
     val config = ChessConfig();
     val game = ChessGame(config);
 
+    game.start()
+    game.stepByStep()
 }

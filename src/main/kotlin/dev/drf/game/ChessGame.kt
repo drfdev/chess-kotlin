@@ -11,4 +11,7 @@ class ChessGame(
     fun nextMove() {
         // TODO
     }
+    fun stepByStep() {
+        // TODO
+    }
 }
