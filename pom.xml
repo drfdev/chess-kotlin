@@ -14,6 +14,8 @@
         <experimentalCoroutines>enable</experimentalCoroutines>
 
         <main.class>dev.drf.MainKt</main.class>
+
+        <junit.version>5.0.2</junit.version>
     </properties>
 
     <dependencies>
@@ -21,6 +23,13 @@
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-stdlib</artifactId>
             <version>${kotlin.version}</version>
+        </dependency>
+        <!-- Test -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
