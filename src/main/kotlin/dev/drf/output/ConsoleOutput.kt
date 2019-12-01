@@ -1,9 +1,9 @@
 package dev.drf.output
 
-import dev.drf.core.Checkerboard
+import dev.drf.core.Chessboard
 
 class ConsoleOutput {
-    fun draw(map: Checkerboard) {
+    fun draw(map: Chessboard) {
         // TODO
     }
 }

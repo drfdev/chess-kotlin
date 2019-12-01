@@ -1,9 +1,9 @@
 package dev.drf.classic
 
-import dev.drf.core.Checkerboard
+import dev.drf.core.Chessboard
 import dev.drf.core.ChessFigure
 
-class ClassicCheckerboard : Checkerboard {
+class ClassicChessboard : Chessboard {
     private val figures = mutableListOf<ChessFigure>()
 
     override fun whiteFigures(): List<ChessFigure> {

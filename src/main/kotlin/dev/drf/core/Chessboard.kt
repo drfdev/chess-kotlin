@@ -1,6 +1,6 @@
 package dev.drf.core
 
-interface Checkerboard {
+interface Chessboard {
     fun figures(): MutableList<ChessFigure> {
         val figures = mutableListOf<ChessFigure>()
         figures.addAll(whiteFigures())
