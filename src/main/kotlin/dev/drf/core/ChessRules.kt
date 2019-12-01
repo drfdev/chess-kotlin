@@ -1,11 +1,12 @@
 package dev.drf.core
 
-import dev.drf.core.data.CheckerboardCell
+import dev.drf.core.data.ChessboardCell
 
 interface ChessRules {
-    fun checkMove(
-            startPosition: CheckerboardCell,
-            endPosition: CheckerboardCell,
-            type: ChessType
+    fun checkDestination(
+            startPosition: ChessboardCell,
+            endPosition: ChessboardCell,
+            type: ChessType,
+            map: Chessboard
     ): Boolean
 }

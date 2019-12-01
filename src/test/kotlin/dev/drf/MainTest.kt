@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test
 class MainTest {
     @Test
     fun test() {
-        print("Main test: assertTrue(true)")
+        println("Main test: assertTrue(true)")
         assertTrue(true)
     }
 }

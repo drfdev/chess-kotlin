@@ -15,6 +15,8 @@ class ChessGame(
     var rules: ChessRules = config.rules()
 
     fun start() {
+        reset()
+        board.initFigures(config)
         // TODO
     }
     fun nextMove() {
@@ -26,5 +28,9 @@ class ChessGame(
 
     private fun drawBoard() {
         output.draw(board)
+    }
+
+    private fun reset() {
+        board.reset()
     }
 }

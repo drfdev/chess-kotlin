@@ -1,6 +1,9 @@
 package dev.drf.core
 
-interface Chessboard {
+import dev.drf.config.ChessConfig
+import dev.drf.core.common.Resatable
+
+interface Chessboard : Resatable {
     fun figures(): MutableList<ChessFigure> {
         val figures = mutableListOf<ChessFigure>()
         figures.addAll(whiteFigures())
@@ -9,4 +12,5 @@ interface Chessboard {
     }
     fun whiteFigures(): List<ChessFigure>
     fun blackFigures(): List<ChessFigure>
+    fun initFigures(config: ChessConfig)
 }
