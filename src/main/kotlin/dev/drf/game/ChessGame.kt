@@ -16,7 +16,6 @@ class ChessGame(
 
     fun start() {
         reset()
-        board.initFigures(config)
         // TODO
     }
     fun nextMove() {
@@ -32,5 +31,6 @@ class ChessGame(
 
     private fun reset() {
         board.reset()
+        board.initFigures(config)
     }
 }

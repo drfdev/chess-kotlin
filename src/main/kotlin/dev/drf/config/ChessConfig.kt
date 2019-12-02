@@ -9,7 +9,6 @@ import dev.drf.core.ChessType
 import dev.drf.core.Chessboard
 import dev.drf.core.data.ChessboardCell
 import dev.drf.core.data.chessboardCellOf
-import org.w3c.dom.CharacterData
 import java.lang.RuntimeException
 
 class ChessConfig {
@@ -64,8 +63,8 @@ class ChessConfig {
         )
     }
     private fun stringToCell(value: String): ChessboardCell {
-        val row = value[0]
-        val cell = value[1]
+        val cell = value[0]
+        val row = value[1]
 
         return chessboardCellOf(Character.getNumericValue(row) - 1, charToInt(cell))
     }

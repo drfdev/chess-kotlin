@@ -21,6 +21,6 @@ class ClassicChessboard : Chessboard {
     }
 
     override fun reset() {
-        // TODO
+        figures.clear()
     }
 }
