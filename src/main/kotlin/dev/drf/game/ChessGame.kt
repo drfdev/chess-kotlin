@@ -16,13 +16,24 @@ class ChessGame(
 
     fun start() {
         reset()
-        // TODO
+        nextStep()
     }
     fun nextMove() {
         // TODO
     }
-    fun stepByStep() {
+    private fun nextStep() {
+        drawBoard()
         // TODO
+        /*
+        wait command
+        command
+        analyze command
+        check move
+        error or make move
+        is game over?
+        yes - stop
+        no - nextStep
+         */
     }
 
     private fun drawBoard() {
