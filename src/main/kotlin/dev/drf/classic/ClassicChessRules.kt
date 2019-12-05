@@ -1,18 +1,16 @@
 package dev.drf.classic
 
 import dev.drf.core.ChessRules
-import dev.drf.core.ChessType
 import dev.drf.core.Chessboard
-import dev.drf.core.data.ChessboardCell
+import dev.drf.core.data.CanMove
 import dev.drf.core.data.Move
 
 class ClassicChessRules : ChessRules {
     override fun checkDestination(
             move: Move,
-            type: ChessType,
             map: Chessboard
-    ): Boolean {
+    ): CanMove {
         // TODO
-        return false
+        return CanMove()
     }
 }

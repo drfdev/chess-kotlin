@@ -15,4 +15,5 @@ interface Chessboard : Resatable {
     fun blackFigures(): List<ChessFigure>
     fun initFigures(config: ChessConfig)
     fun cellChar(cell: ChessboardCell): Char
+    fun cellFigure(cell: ChessboardCell): ChessFigure?
 }

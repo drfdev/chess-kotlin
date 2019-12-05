@@ -9,6 +9,8 @@ import dev.drf.core.ChessType
 import dev.drf.core.Chessboard
 import dev.drf.core.data.ChessboardCell
 import dev.drf.core.data.chessboardCellOf
+import dev.drf.core.input.CommandDetectorChain
+import dev.drf.input.stringChainBuilder
 import dev.drf.util.stringToCell
 import java.lang.RuntimeException
 
@@ -63,5 +65,7 @@ class ChessConfig {
                 ClassicChessFigure(ChessType.BLANK_PAWN, stringToCell("H7"))
         )
     }
-
+    fun defaultCommandDetectorChain(): CommandDetectorChain {
+        return stringChainBuilder().build()
+    }
 }

@@ -28,6 +28,11 @@ class ClassicChessboard : Chessboard {
         return figure?.type()?.char ?: ' '
     }
 
+    override fun cellFigure(cell: ChessboardCell): ChessFigure? {
+        // TODO
+        return null
+    }
+
     override fun reset() {
         figures.clear()
     }
