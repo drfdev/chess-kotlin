@@ -8,7 +8,7 @@ import dev.drf.core.ChessRules
 import dev.drf.core.ChessType
 import dev.drf.core.Chessboard
 import dev.drf.core.data.Move
-import dev.drf.core.input.Chain
+import dev.drf.core.common.Chain
 import dev.drf.input.stringChainBuilder
 import dev.drf.util.stringToCell
 

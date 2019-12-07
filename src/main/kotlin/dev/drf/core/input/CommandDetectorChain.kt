@@ -1,5 +1,6 @@
 package dev.drf.core.input
 
+import dev.drf.core.common.Chain
 import dev.drf.core.data.Move
 
 interface CommandDetectorChain : Chain<String, Move> {
