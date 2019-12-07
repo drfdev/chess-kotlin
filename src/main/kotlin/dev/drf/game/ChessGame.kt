@@ -3,7 +3,6 @@ package dev.drf.game
 import dev.drf.config.ChessConfig
 import dev.drf.core.ChessRules
 import dev.drf.core.Chessboard
-import dev.drf.core.input.CommandDetectorChain
 import dev.drf.input.ConsoleInput
 import dev.drf.output.ConsoleOutput
 
@@ -14,19 +13,21 @@ class ChessGame(
 ) {
     var board: Chessboard = config.chessboard()
     var rules: ChessRules = config.rules()
-    var commandChain: CommandDetectorChain = config.defaultCommandDetectorChain()
+    var commandChain = config.defaultCommandDetectorChain()
 
     fun start() {
         reset()
         nextStep()
     }
+
     fun nextMove() {
         // TODO
     }
+
     private fun nextStep() {
         drawBoard()
         val command = input.readString()
-        val move = commandChain.startChain(command)
+        val move = commandChain.execute(command)
         val canMove = rules.checkDestination(move, board)
         // TODO
         /*

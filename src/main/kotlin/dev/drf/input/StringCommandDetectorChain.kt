@@ -7,7 +7,7 @@ import dev.drf.core.input.CommandDetectorChain
 class StringCommandDetectorChain : CommandDetectorChain {
     lateinit var next: CommandDetectorChain
 
-    override fun startChain(command: String): Move {
+    override fun execute(command: String): Move {
         // TODO
         return Move(
                 chessboardCellOf(1, 1),

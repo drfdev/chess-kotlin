@@ -7,20 +7,20 @@ import dev.drf.core.ChessFigure
 import dev.drf.core.ChessRules
 import dev.drf.core.ChessType
 import dev.drf.core.Chessboard
-import dev.drf.core.data.ChessboardCell
-import dev.drf.core.data.chessboardCellOf
-import dev.drf.core.input.CommandDetectorChain
+import dev.drf.core.data.Move
+import dev.drf.core.input.Chain
 import dev.drf.input.stringChainBuilder
 import dev.drf.util.stringToCell
-import java.lang.RuntimeException
 
 class ChessConfig {
     fun chessboard(): Chessboard {
         return ClassicChessboard()
     }
+
     fun rules(): ChessRules {
         return ClassicChessRules()
     }
+
     fun defaultWhiteFigures(): List<ChessFigure> {
         return listOf(
                 /* row 1 */
@@ -43,6 +43,7 @@ class ChessConfig {
                 ClassicChessFigure(ChessType.WHITE_ROOK, stringToCell("H1"))
         )
     }
+
     fun defaultBlackFigures(): List<ChessFigure> {
         return listOf(
                 /* row 1 */
@@ -65,7 +66,8 @@ class ChessConfig {
                 ClassicChessFigure(ChessType.BLANK_PAWN, stringToCell("H7"))
         )
     }
-    fun defaultCommandDetectorChain(): CommandDetectorChain {
+
+    fun defaultCommandDetectorChain(): Chain<String, Move> {
         return stringChainBuilder().build()
     }
 }
