@@ -9,6 +9,7 @@ import dev.drf.core.ChessType
 import dev.drf.core.Chessboard
 import dev.drf.core.data.Move
 import dev.drf.core.common.Chain
+import dev.drf.game.Turn
 import dev.drf.input.stringChainBuilder
 import dev.drf.util.stringToCell
 
@@ -69,5 +70,9 @@ class ChessConfig {
 
     fun defaultCommandDetectorChain(): Chain<String, Move> {
         return stringChainBuilder().build()
+    }
+
+    fun defaultTurn(): Turn {
+        return Turn.WHITE
     }
 }

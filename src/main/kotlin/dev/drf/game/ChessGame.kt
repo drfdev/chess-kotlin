@@ -14,13 +14,18 @@ class ChessGame(
     var board: Chessboard = config.chessboard()
     var rules: ChessRules = config.rules()
     var commandChain = config.defaultCommandDetectorChain()
+    var turn = config.defaultTurn()
 
     fun start() {
         reset()
-        nextStep()
+        while (isGameNotFinished()) {
+            nextStep()
+            switchTurn()
+        }
+        endGame()
     }
 
-    fun nextMove() {
+    private fun nextMove() {
         // TODO
     }
 
@@ -28,7 +33,7 @@ class ChessGame(
         drawBoard()
         val command = input.readString()
         val move = commandChain.execute(command)
-        val canMove = rules.checkDestination(move, board)
+        val canMove = rules.checkDestination(move, board, turn)
         // TODO
         /*
         error or make move
@@ -40,10 +45,24 @@ class ChessGame(
 
     private fun drawBoard() {
         output.draw(board)
+        output.draw(turn)
     }
 
     private fun reset() {
         board.reset()
         board.initFigures(config)
+    }
+
+    private fun isGameNotFinished(): Boolean {
+        // TODO
+        return true
+    }
+
+    private fun endGame() {
+        // TODO
+    }
+
+    private fun switchTurn() {
+        turn = if (turn == Turn.WHITE) Turn.BLACK else Turn.WHITE
     }
 }

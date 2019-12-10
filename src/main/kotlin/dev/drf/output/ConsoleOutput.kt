@@ -1,6 +1,7 @@
 package dev.drf.output
 
 import dev.drf.core.Chessboard
+import dev.drf.game.Turn
 import dev.drf.util.stringToCell
 
 class ConsoleOutput {
@@ -17,6 +18,14 @@ class ConsoleOutput {
              _| | __ __ __ __ __ __ __ __
             //| |A_|B_|C_|D_|E_|F_|G_|H_|
         """.trimIndent())
+    }
+
+    fun draw(turn: Turn) {
+        val turnString = when (turn) {
+            Turn.WHITE -> "White"
+            Turn.BLACK -> "Black"
+        }
+        println("$turnString turn.")
     }
 
     private fun getChar(map: Chessboard, cell: String): Char {
