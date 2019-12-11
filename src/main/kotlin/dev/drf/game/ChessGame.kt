@@ -3,6 +3,7 @@ package dev.drf.game
 import dev.drf.config.ChessConfig
 import dev.drf.core.ChessRules
 import dev.drf.core.Chessboard
+import dev.drf.core.data.ContextType
 import dev.drf.input.ConsoleInput
 import dev.drf.output.ConsoleOutput
 
@@ -15,37 +16,56 @@ class ChessGame(
     var rules: ChessRules = config.rules()
     var commandChain = config.defaultCommandDetectorChain()
     var turn = config.defaultTurn()
+    var gameFinished = false
 
     fun start() {
         reset()
         while (isGameNotFinished()) {
-            nextStep()
+            var status = nextStep()
+            if (status == StepStatus.EXIT) {
+                gameFinished = true
+                break
+            }
+            while (status == StepStatus.ERROR) {
+                status = errorStep()
+                if (status == StepStatus.EXIT) {
+                    gameFinished = true
+                    break
+                }
+            }
             switchTurn()
         }
         endGame()
     }
 
-    private fun nextMove() {
-        // TODO
-    }
-
-    private fun nextStep() {
-        drawBoard()
-        val command = input.readString()
-        val move = commandChain.execute(command)
-        val canMove = rules.checkDestination(move, board, turn)
-        // TODO
-        /*
-        error or make move
-        is game over?
-        yes - stop
-        no - nextStep
-         */
-    }
-
-    private fun drawBoard() {
+    private fun nextStep(): StepStatus {
         output.draw(board)
         output.draw(turn)
+        return awaitAndExecuteChessCommand()
+    }
+
+    private fun errorStep(): StepStatus {
+        output.draw(turn)
+        return awaitAndExecuteChessCommand()
+    }
+
+    private fun awaitAndExecuteChessCommand(): StepStatus {
+        val command = input.readString()
+        val moveContext = commandChain.execute(command)
+        if (moveContext.contextType == ContextType.EXIT) {
+            return StepStatus.EXIT
+        }
+        val canMove = rules.checkDestination(moveContext.move, board, turn)
+        // TODO
+        /*
+        is King under attack ?
+        yes -
+            King can escape ?
+                yes - warning
+                no - game ended
+        no - just move
+         */
+        return StepStatus.SUCCESS
     }
 
     private fun reset() {
@@ -54,8 +74,7 @@ class ChessGame(
     }
 
     private fun isGameNotFinished(): Boolean {
-        // TODO
-        return true
+        return !gameFinished
     }
 
     private fun endGame() {
