@@ -4,6 +4,7 @@ import dev.drf.config.ChessConfig
 import dev.drf.core.ChessRules
 import dev.drf.core.Chessboard
 import dev.drf.core.data.ContextType
+import dev.drf.input.CommandContext
 import dev.drf.input.ConsoleInput
 import dev.drf.output.ConsoleOutput
 
@@ -51,7 +52,7 @@ class ChessGame(
 
     private fun awaitAndExecuteChessCommand(): StepStatus {
         val command = input.readString()
-        val moveContext = commandChain.execute(command)
+        val moveContext = commandChain.execute(CommandContext(command))
         if (moveContext.contextType == ContextType.EXIT) {
             return StepStatus.EXIT
         }

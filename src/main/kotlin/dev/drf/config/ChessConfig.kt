@@ -10,7 +10,11 @@ import dev.drf.core.Chessboard
 import dev.drf.core.common.Chain
 import dev.drf.core.data.MoveContext
 import dev.drf.game.Turn
-import dev.drf.input.stringChainBuilder
+import dev.drf.input.CommandContext
+import dev.drf.input.StringCommandDetectorChain
+import dev.drf.input.chain.BuildMoveChain
+import dev.drf.input.chain.RemoveWhitespacesChain
+import dev.drf.input.chain.StandardizedStringChain
 import dev.drf.util.stringToCell
 
 class ChessConfig {
@@ -68,8 +72,12 @@ class ChessConfig {
         )
     }
 
-    fun defaultCommandDetectorChain(): Chain<String, MoveContext> {
-        return stringChainBuilder().build()
+    fun defaultCommandDetectorChain(): Chain<CommandContext, MoveContext> {
+        val chain: StringCommandDetectorChain = RemoveWhitespacesChain()
+        val nextChain = StandardizedStringChain()
+        chain.next = nextChain
+        nextChain.next = BuildMoveChain()
+        return chain
     }
 
     fun defaultTurn(): Turn {

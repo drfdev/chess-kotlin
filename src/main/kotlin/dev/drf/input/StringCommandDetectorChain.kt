@@ -1,22 +1,15 @@
 package dev.drf.input
 
-import dev.drf.core.data.Move
 import dev.drf.core.data.MoveContext
-import dev.drf.core.data.chessboardCellOf
 import dev.drf.core.input.CommandDetectorChain
 
-class StringCommandDetectorChain : CommandDetectorChain {
-    lateinit var next: CommandDetectorChain
+abstract class StringCommandDetectorChain : CommandDetectorChain {
+    var next: CommandDetectorChain? = null
 
-    override fun execute(command: String): MoveContext {
-        // TODO
-        return MoveContext(Move(
-                chessboardCellOf(1, 1),
-                chessboardCellOf(2, 2)
-        ))
+    override fun execute(command: CommandContext): MoveContext {
+        val context = executeCommand(command)
+        return if (next != null ) next!!.execute(context) else context.moveContext!!
     }
 
-    override fun next(): CommandDetectorChain {
-        return next
-    }
+    abstract fun executeCommand(command: CommandContext): CommandContext
 }
